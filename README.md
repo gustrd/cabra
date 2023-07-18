@@ -6,34 +6,36 @@
 
 This repository is intended to share all the steps and resources that we used to finetune our version of Open-LLaMA.
 
-This model is allowed to commercial purposes, by having the license cc-by-sa-3.0. It only used commercially licensed sources.
+This model is allowed for commercial purposes, by having the license cc-by-sa-3.0. It only used commercially licensed sources.
 
-The project was strongly inspired by Cabrita ( https://github.com/22-hours/cabrita ), that had a similar solution but without using commercial licensed sources and a smaller 7B model instead of a 13B.
+The project was strongly inspired by [Cabrita](https://github.com/22-hours/cabrita), which had a similar solution but without using commercially licensed sources, and used a smaller 7B model instead of a 13B.
 
 The resulting models can be downloaded at Hugging Face:
 
-[Cabra-13B-LoRA](TODO) - To use with the [original model](https://huggingface.co/VMware/open-llama-13b-open-instruct);
-[Cabra-13B-Merged] (TODO) - To standalone use;
-[Cabra-13B-GGML] (TODO) - For CPU inference, using [llama.cpp](https://github.com/ggerganov/llama.cpp) or [koboldcpp](https://github.com/LostRuins/koboldcpp);
+- [Cabra-13B-LoRA](TODO) - To use with the [original model](https://huggingface.co/VMware/open-llama-13b-open-instruct);
+
+- [Cabra-13B-Merged](TODO) - To standalone use;
+
+- [Cabra-13B-GGML](TODO) - For CPU inference, using [llama.cpp](https://github.com/ggerganov/llama.cpp) or [koboldcpp](https://github.com/LostRuins/koboldcpp);
 
 ## References
 
 > If I have seen further it is by standing on the sholders [sic] of Giants.
 > -- <cite>Isaac Newton</cite>
 
-We started this section with this citation because everything we did was only possible due to the strong community and works that other people and groups did. For our work, we rely mainly in the works developed by: [Cabrita](https://github.com/22-hours/cabrita), [OpenLlama](https://github.com/openlm-research/open_llama), [Hugging Face](https://huggingface.co/), [Open-Instruct](https://github.com/allenai/open-instruct), [VMware](https://huggingface.co/VMware/open-llama-13b-open-instruct), [Dolly](https://github.com/databrickslabs/dolly) and [LibreTranslate](https://github.com/LibreTranslate/LibreTranslate) .So, thank you all for the great work and contribution to the open-source community!
+We started this section with this citation because everything we accomplished was only possible due to the strong community and the work that other people and groups have done. For our work, we mainly rely on the works developed by: [Cabrita](https://github.com/22-hours/cabrita), [OpenLlama](https://github.com/openlm-research/open_llama), [Hugging Face](https://huggingface.co/), [Open-Instruct](https://github.com/allenai/open-instruct), [VMware](https://huggingface.co/VMware/open-llama-13b-open-instruct), [Dolly](https://github.com/databrickslabs/dolly) and [LibreTranslate](https://github.com/LibreTranslate/LibreTranslate) .So, thank you all for the great work and contribution to the open-source community!
 
 
 ## Data
 
-We translated the [databricks-dolly-15k.jsonl](https://huggingface.co/datasets/databricks/databricks-dolly-15k/resolve/main/databricks-dolly-15k.jsonl) to portuguese using LibreTranslate. Even if this translation is flawed, the tradeoff between speed, cost and results is good. We could do it at some hours at a consumer grade laptop.
+We translated the [databricks-dolly-15k.jsonl](https://huggingface.co/datasets/databricks/databricks-dolly-15k/resolve/main/databricks-dolly-15k.jsonl) into Portuguese using LibreTranslate. Even if this translation is flawed, the tradeoff between speed, cost and results is good. We were able to do it in a few hours on a consumer-grade laptop.
 If you want to know more about how the dataset was built go to: [Dolly](https://github.com/databrickslabs/dolly).
 
 We avoided using GPT to the translation, like the original Cabrita project did, because of the problems with licensing.
 
 ## Finetuning
 
-To finetuned the OpenLLaMA model we used the code available on [Cabrita](https://github.com/22-hours/cabrita), which provides code to finetune the LLaMA model using PEFT from Hugging Face, we just adapted it to OpenLlama-Instruct. With this, we could run our finetuning step using 1 A4000 at Paperspace on top of OpenLLaMA-OpenInstruct-13B. We trained during around 7 hours and we found the results pretty incredible with just that much time. The notebook we used is avaible [here](TODO).
+To fine-tune the OpenLLaMA model, we used the code available on [Cabrita](https://github.com/22-hours/cabrita), which provides code to finetune the LLaMA model using PEFT from Hugging Face, we just adapted it to OpenLlama-Instruct. With this, we could run our finetuning step using 1 A4000 at Paperspace on top of OpenLLaMA-OpenInstruct-13B. We trained for about 7 hours and we found the results to be pretty incredible in just that amount of time. The notebook we used is avaible [here](TODO).
 
 
 ## Example outputs
@@ -83,9 +85,9 @@ You can test it using the eval notebook [here](TODO).
 
 ## Next steps
 
-- Create a better portuguese dataset, using a better tool to translate (some options at DeepL or manual adjust);
-- Use a bigger open dataset, avaliable to commercial use, like [RedPajama-Data](https://github.com/togethercomputer/RedPajama-Data);
-- Finetune large models when a new OpenLlama is released;
+- Create a better Portuguese dataset, using a better translation tool (some options include DeepL or manual adjustment);
+- Use a larger open dataset, available for commercial use, like [open-instruct-v1-oasst-dolly-hhrlhf](https://huggingface.co/datasets/VMware/open-instruct-v1-oasst-dolly-hhrlhf) or even [RedPajama-Data](https://github.com/togethercomputer/RedPajama-Data);
+- Fine-tune large models when a new OpenLlama is released;
 
 ## Authors
 
