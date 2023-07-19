@@ -18,6 +18,8 @@ The resulting models can be downloaded at Hugging Face:
 
 - [Cabra-13B-GGML](https://huggingface.co/Gustrd/open-llama-13b-lora-cabra-adapter) - For CPU inference, using [llama.cpp](https://github.com/ggerganov/llama.cpp) or [koboldcpp](https://github.com/LostRuins/koboldcpp). Only with the adapter for now;
 
+You can test the inference online at Kaggle [here](https://www.kaggle.com/gustavorochadias/inference-cabra-kaggle-v1-0).
+
 ## References
 
 > If I have seen further it is by standing on the sholders [sic] of Giants.
@@ -28,7 +30,7 @@ We started this section with this citation because everything we accomplished wa
 
 ## Data
 
-We translated the [databricks-dolly-15k.jsonl](https://huggingface.co/datasets/databricks/databricks-dolly-15k/resolve/main/databricks-dolly-15k.jsonl) into Portuguese using LibreTranslate. Even if this translation is flawed, the tradeoff between speed, cost and results is good. We were able to do it in a few hours on a consumer-grade laptop.
+We translated the [databricks-dolly-15k.jsonl](https://huggingface.co/datasets/databricks/databricks-dolly-15k/resolve/main/databricks-dolly-15k.jsonl) into Portuguese using LibreTranslate. Even if this translation is flawed, the tradeoff between speed, cost and results is good. We were able to do it in a few hours on a consumer-grade laptop. The translation script is at this repository.
 
 If you want to know more about how the dataset was built go to: [Dolly](https://github.com/databrickslabs/dolly).
 
@@ -86,7 +88,7 @@ Resposta:
 - Trabalhando em projetos em grupo ou sozinho.
 ```
 
-You can test it using the eval notebook [here](TODO).
+You can download the eval notebook to test [here](https://github.com/gustrd/cabra/blob/dev/notebooks/inference-cabra-kaggle.ipynb).
 
 ## Next steps
 
