@@ -20,6 +20,33 @@ The resulting models can be downloaded at Hugging Face:
 
 You can test the inference online at Kaggle [here](https://www.kaggle.com/gustavorochadias/inference-cabra-kaggle-v1-0).
 
+## Benchmarks
+
+We have introduced a novel benchmark to assess the performance of models in English-to-Portuguese translation tasks. Named HIPPO (High-level Interlingual Performance Proximity Optimized), this automated benchmark evaluates not only the absence of grammatical errors but also the semantic closeness of the translation to a reference, using embeddings. You can access the documentation for the HIPPO Benchmark [here](TODO).
+
+For these models, we utilized the parameters listed below, which we believe can still be optimized:
+
+- Dataset: 2k rows - [opus-100 en-pt validation subset](https://huggingface.co/datasets/opus100/viewer/en-pt/validation);
+- Temperature: 0.3;
+- Top-P value: 0.9;
+
+Results Overview:
+
+| Model | Fine-tuned? | Original Model | Allows Commercial Use? |HIPPO-Opus100-Grammar | HIPPO-Opus100-Paraphrase | HIPPO-Opus100-Combined |
+|-------|-------------|----------------|------------------------|----------------------|--------------------------|------------------------|
+| Llama-7B | No | N/A | No | 6.11% | 8.91% | 2.10% |
+| Alpaca-7B | Yes | Llama-7B | No | 32.60% | 46.30% | 15.25% |
+| Cabrita-7B | Yes | Llama-7B | No | 34.00% | 33.85% | 10.60% |
+| OpenLlama-Instruct-13B | Yes | OpenLlama-13B | 26.35% | 32.50% | 8.75% |
+| Cabra-13B (ours) | Yes | OpenLlama-Instruct-13B | 31.75% | 37.75% | 10.65% |
+| LibreTranslate (reference) | Not-LLM | Not-LLM | 44.55% | 66.40% | 27.90% |
+
+- Fine-tuning models specifically for the target language significantly improves their capability.
+- Alpaca-7B showcases remarkable efficiency even without Portuguese-specific fine-tuning. This could be attributed to the superiority of the Alpaca Dataset compared to Dolly or possibly because Llama's foundational training surpasses that of OpenLlama.
+- Cabrita made improvements but lags behind Alpaca-7B. This might be due to the quick implementation of LoRA fine-tuning.
+- Cabra, despite its gains, still offers considerable room for enhancement, especially given its higher parameter count.
+- LibreTranslate, taken as a reference, faces challenges with this benchmark as well, indicating the complexities and nuances of certain translation tasks.
+
 ## References
 
 > If I have seen further it is by standing on the sholders [sic] of Giants.
@@ -72,7 +99,7 @@ Response:
 9. Aplique para o Programa de Pós-Doutoramento em Ciência da Computação da Amazon.
 ```
 
-Cabrita:
+Cabra:
 ```
 Instrução: 
 Como posso começar a carreira como cientista de dados? Escreva na forma de lista.
@@ -90,12 +117,17 @@ Resposta:
 
 You can download the eval notebook to test [here](https://github.com/gustrd/cabra/blob/dev/notebooks/inference-cabra-kaggle.ipynb).
 
-## Next steps
+## Recent Advancements
 
-- Create a better Portuguese dataset, using a better translation tool (some options include DeepL or manual adjustment);
-- Use a larger open dataset, available for commercial use, like [open-instruct-v1-oasst-dolly-hhrlhf](https://huggingface.co/datasets/VMware/open-instruct-v1-oasst-dolly-hhrlhf) or even [RedPajama-Data](https://github.com/togethercomputer/RedPajama-Data);
-- Fine-tune large models when a new OpenLlama is released;
-- Create a benchmark to evaluate the quality of each fine-tune;
+- 2023-08-07: Introduced the HIPPO-Opus100 benchmark to assess the quality of each model's fine-tuning.
+
+## Upcoming Objectives
+
+- Language Impact on Prompt Structure: Investigate the differential impacts of using the Alpaca prompt structure in English compared to Portuguese.
+- Efficiency Analysis: Examine the efficiency of [Emotional Stimuly](https://techxplore.com/news/2023-08-exploring-effects-emotional-stimuli-large.html) in model performance and response.
+- Dataset Enhancement: We aim to improve the Portuguese dataset using advanced translation tools. Our current strategy involves leveraging the [open-instruct-v1-oasst-dolly-hhrlhf](https://huggingface.co/datasets/VMware/open-instruct-v1-oasst-dolly-hhrlhf) dataset, combined with automatic translations from MarinMT and LibreTranslate. The subsequent dataset will undergo HIPPO filtering to eliminate rows containing grammatical errors or those with suboptimal semantic proximity.
+- Model Fine-Tuning: As new versions of OpenLlama are launched, we plan to fine-tune our larger models accordingly.
+- Alternative Model Study: We are researching alternatives to OpenLlama that are not only efficient but also permit commercial usage, such as the MPT.
 
 ## Authors
 
