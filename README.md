@@ -37,9 +37,9 @@ Results Overview:
 | Llama-7B | No | N/A | No | 6.11% | 8.91% | 2.10% |
 | Alpaca-7B | Yes | Llama-7B | No | 32.60% | 46.30% | 15.25% |
 | Cabrita-7B | Yes | Llama-7B | No | 34.00% | 33.85% | 10.60% |
-| OpenLlama-Instruct-13B | Yes | OpenLlama-13B | 26.35% | 32.50% | 8.75% |
-| Cabra-13B (ours) | Yes | OpenLlama-Instruct-13B | 31.75% | 37.75% | 10.65% |
-| LibreTranslate (reference) | Not-LLM | Not-LLM | 44.55% | 66.40% | 27.90% |
+| OpenLlama-Instruct-13B | Yes | OpenLlama-13B | Yes | 26.35% | 32.50% | 8.75% |
+| Cabra-13B (ours) | Yes | OpenLlama-Instruct-13B | Yes | 31.75% | 37.75% | 10.65% |
+| LibreTranslate (reference) | Not-LLM | Not-LLM | Yes | 44.55% | 66.40% | 27.90% |
 
 - Fine-tuning models specifically for the target language significantly improves their capability.
 - Alpaca-7B showcases remarkable efficiency even without Portuguese-specific fine-tuning. This could be attributed to the superiority of the Alpaca Dataset compared to Dolly or possibly because Llama's foundational training surpasses that of OpenLlama.
