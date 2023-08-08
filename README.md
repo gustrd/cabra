@@ -22,7 +22,7 @@ You can test the inference online at Kaggle [here](https://www.kaggle.com/gustav
 
 ## Benchmarks
 
-We have introduced a novel benchmark to assess the performance of models in English-to-Portuguese translation tasks. Named HIPPO (High-level Interlingual Performance Proximity Optimized), this automated benchmark evaluates not only the absence of grammatical errors but also the semantic closeness of the translation to a reference, using embeddings. You can access the documentation for the HIPPO Benchmark [here](TODO).
+We have introduced a novel benchmark to assess the performance of models in English-to-Portuguese translation tasks. Named HIPPO (High-level Interlingual Performance Proximity Optimized), this automated benchmark evaluates not only the absence of grammatical errors but also the semantic closeness of the translation to a reference, using embeddings. You can access the documentation for the HIPPO Benchmark [here](https://github.com/gustrd/hippo).
 
 For these models, we utilized the parameters listed below, which we believe can still be optimized:
 
